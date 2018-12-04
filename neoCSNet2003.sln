@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "neoCSNet2003", "neoCSNet2003.csproj", "{A512D489-9395-493A-9651-6987B13CEB1E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Debug.ActiveCfg = Debug|.NET
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Debug.Build.0 = Debug|.NET
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Release.ActiveCfg = Release|.NET
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
