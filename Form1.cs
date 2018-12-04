@@ -4,8 +4,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
-using System.Text; 
+using System.Text;
 
+//命名空间的设计目的是提供一种让一组名称与其他名称分隔开的方式。在一个命名空间中声明的类的名称与另一个命名空间中声明的相同的类的名称不冲突。
 namespace neoCSNet2003
 {
 	/// <summary>
@@ -243,42 +244,42 @@ namespace neoCSNet2003
 			this.GroupBox2.Controls.Add(this.txtDataByte8);
 			this.GroupBox2.Controls.Add(this.txtDataByte1);
 			this.GroupBox2.Controls.Add(this.Label2);
-			this.GroupBox2.Location = new System.Drawing.Point(0, 88);
+			this.GroupBox2.Location = new System.Drawing.Point(0, 95);
 			this.GroupBox2.Name = "GroupBox2";
-			this.GroupBox2.Size = new System.Drawing.Size(536, 118);
+			this.GroupBox2.Size = new System.Drawing.Size(643, 127);
 			this.GroupBox2.TabIndex = 46;
 			this.GroupBox2.TabStop = false;
 			this.GroupBox2.Text = "Transmit Messages";
 			// 
 			// chkExtendedID
 			// 
-			this.chkExtendedID.Location = new System.Drawing.Point(312, 40);
+			this.chkExtendedID.Location = new System.Drawing.Point(374, 43);
 			this.chkExtendedID.Name = "chkExtendedID";
-			this.chkExtendedID.Size = new System.Drawing.Size(160, 16);
+			this.chkExtendedID.Size = new System.Drawing.Size(192, 17);
 			this.chkExtendedID.TabIndex = 26;
 			this.chkExtendedID.Text = "Send Extended ID";
 			// 
 			// txtDataByte11
 			// 
-			this.txtDataByte11.Location = new System.Drawing.Point(400, 64);
+			this.txtDataByte11.Location = new System.Drawing.Point(480, 69);
 			this.txtDataByte11.Name = "txtDataByte11";
-			this.txtDataByte11.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte11.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte11.TabIndex = 16;
 			this.txtDataByte11.Text = "00";
 			// 
 			// txtDataByte10
 			// 
-			this.txtDataByte10.Location = new System.Drawing.Point(368, 64);
+			this.txtDataByte10.Location = new System.Drawing.Point(442, 69);
 			this.txtDataByte10.Name = "txtDataByte10";
-			this.txtDataByte10.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte10.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte10.TabIndex = 15;
 			this.txtDataByte10.Text = "00";
 			// 
 			// txtDataByte9
 			// 
-			this.txtDataByte9.Location = new System.Drawing.Point(336, 64);
+			this.txtDataByte9.Location = new System.Drawing.Point(403, 69);
 			this.txtDataByte9.Name = "txtDataByte9";
-			this.txtDataByte9.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte9.Size = new System.Drawing.Size(39, 21);
 			this.txtDataByte9.TabIndex = 14;
 			this.txtDataByte9.Text = "00";
 			// 
@@ -286,144 +287,147 @@ namespace neoCSNet2003
 			// 
 			this.lstNumberOfBytes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.lstNumberOfBytes.Items.AddRange(new object[] {
-																  "0",
-																  "1",
-																  "2",
-																  "3",
-																  "4",
-																  "5",
-																  "6",
-																  "7",
-																  "8",
-																  "9",
-																  "10",
-																  "11"});
-			this.lstNumberOfBytes.Location = new System.Drawing.Point(8, 88);
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"});
+			this.lstNumberOfBytes.Location = new System.Drawing.Point(10, 95);
 			this.lstNumberOfBytes.Name = "lstNumberOfBytes";
-			this.lstNumberOfBytes.Size = new System.Drawing.Size(48, 21);
+			this.lstNumberOfBytes.Size = new System.Drawing.Size(57, 20);
 			this.lstNumberOfBytes.TabIndex = 17;
 			// 
 			// Label14
 			// 
-			this.Label14.Location = new System.Drawing.Point(80, 16);
+			this.Label14.Location = new System.Drawing.Point(96, 17);
 			this.Label14.Name = "Label14";
-			this.Label14.Size = new System.Drawing.Size(48, 16);
+			this.Label14.Size = new System.Drawing.Size(58, 17);
 			this.Label14.TabIndex = 21;
 			this.Label14.Text = "Network";
 			// 
 			// lstNetwork
 			// 
 			this.lstNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.lstNetwork.Location = new System.Drawing.Point(80, 32);
+			this.lstNetwork.Location = new System.Drawing.Point(96, 34);
 			this.lstNetwork.Name = "lstNetwork";
-			this.lstNetwork.Size = new System.Drawing.Size(104, 21);
+			this.lstNetwork.Size = new System.Drawing.Size(125, 20);
 			this.lstNetwork.TabIndex = 20;
+			this.lstNetwork.SelectedIndexChanged += new System.EventHandler(this.lstNetwork_SelectedIndexChanged);
 			// 
 			// Label3
 			// 
-			this.Label3.Location = new System.Drawing.Point(232, 40);
+			this.Label3.Location = new System.Drawing.Point(278, 43);
 			this.Label3.Name = "Label3";
-			this.Label3.Size = new System.Drawing.Size(64, 16);
+			this.Label3.Size = new System.Drawing.Size(77, 17);
 			this.Label3.TabIndex = 15;
 			this.Label3.Text = "Data Bytes";
 			// 
 			// txtDataByte2
 			// 
-			this.txtDataByte2.Location = new System.Drawing.Point(112, 64);
+			this.txtDataByte2.Location = new System.Drawing.Point(134, 69);
 			this.txtDataByte2.Name = "txtDataByte2";
-			this.txtDataByte2.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte2.Size = new System.Drawing.Size(39, 21);
 			this.txtDataByte2.TabIndex = 7;
 			this.txtDataByte2.Text = "00";
 			// 
 			// cmdTransmit
 			// 
-			this.cmdTransmit.Location = new System.Drawing.Point(80, 88);
+			this.cmdTransmit.Location = new System.Drawing.Point(96, 95);
 			this.cmdTransmit.Name = "cmdTransmit";
-			this.cmdTransmit.Size = new System.Drawing.Size(352, 24);
+			this.cmdTransmit.Size = new System.Drawing.Size(422, 26);
 			this.cmdTransmit.TabIndex = 18;
 			this.cmdTransmit.Text = "Transmit";
 			this.cmdTransmit.Click += new System.EventHandler(this.cmdTransmit_Click);
 			// 
 			// txtDataByte3
 			// 
-			this.txtDataByte3.Location = new System.Drawing.Point(144, 64);
+			this.txtDataByte3.Location = new System.Drawing.Point(173, 69);
 			this.txtDataByte3.Name = "txtDataByte3";
-			this.txtDataByte3.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte3.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte3.TabIndex = 8;
 			this.txtDataByte3.Text = "00";
 			// 
 			// Label4
 			// 
 			this.Label4.Cursor = System.Windows.Forms.Cursors.SizeAll;
-			this.Label4.Location = new System.Drawing.Point(8, 56);
+			this.Label4.Location = new System.Drawing.Point(10, 60);
 			this.Label4.Name = "Label4";
-			this.Label4.Size = new System.Drawing.Size(64, 32);
+			this.Label4.Size = new System.Drawing.Size(76, 35);
 			this.Label4.TabIndex = 18;
 			this.Label4.Text = "Number of Data Bytes";
 			// 
 			// txtDataByte4
 			// 
-			this.txtDataByte4.Location = new System.Drawing.Point(176, 64);
+			this.txtDataByte4.Location = new System.Drawing.Point(211, 69);
 			this.txtDataByte4.Name = "txtDataByte4";
-			this.txtDataByte4.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte4.Size = new System.Drawing.Size(39, 21);
 			this.txtDataByte4.TabIndex = 9;
 			this.txtDataByte4.Text = "00";
 			// 
 			// txtDataByte5
 			// 
-			this.txtDataByte5.Location = new System.Drawing.Point(208, 64);
+			this.txtDataByte5.Location = new System.Drawing.Point(250, 69);
 			this.txtDataByte5.Name = "txtDataByte5";
-			this.txtDataByte5.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte5.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte5.TabIndex = 10;
 			this.txtDataByte5.Text = "00";
 			// 
 			// txtDataByte6
 			// 
-			this.txtDataByte6.Location = new System.Drawing.Point(240, 64);
+			this.txtDataByte6.Location = new System.Drawing.Point(288, 69);
 			this.txtDataByte6.Name = "txtDataByte6";
-			this.txtDataByte6.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte6.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte6.TabIndex = 11;
 			this.txtDataByte6.Text = "00";
 			// 
 			// txtDataByte7
 			// 
-			this.txtDataByte7.Location = new System.Drawing.Point(272, 64);
+			this.txtDataByte7.Location = new System.Drawing.Point(326, 69);
 			this.txtDataByte7.Name = "txtDataByte7";
-			this.txtDataByte7.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte7.Size = new System.Drawing.Size(39, 21);
 			this.txtDataByte7.TabIndex = 12;
 			this.txtDataByte7.Text = "00";
 			// 
 			// txtArbID
 			// 
-			this.txtArbID.Location = new System.Drawing.Point(8, 32);
+			this.txtArbID.Location = new System.Drawing.Point(10, 34);
 			this.txtArbID.Name = "txtArbID";
-			this.txtArbID.Size = new System.Drawing.Size(40, 20);
+			this.txtArbID.Size = new System.Drawing.Size(48, 21);
 			this.txtArbID.TabIndex = 5;
 			this.txtArbID.Text = "101";
+			this.txtArbID.TextChanged += new System.EventHandler(this.txtArbID_TextChanged);
 			// 
 			// txtDataByte8
 			// 
-			this.txtDataByte8.Location = new System.Drawing.Point(304, 64);
+			this.txtDataByte8.Location = new System.Drawing.Point(365, 69);
 			this.txtDataByte8.Name = "txtDataByte8";
-			this.txtDataByte8.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte8.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte8.TabIndex = 13;
 			this.txtDataByte8.Text = "00";
 			// 
 			// txtDataByte1
 			// 
-			this.txtDataByte1.Location = new System.Drawing.Point(80, 64);
+			this.txtDataByte1.Location = new System.Drawing.Point(96, 69);
 			this.txtDataByte1.Name = "txtDataByte1";
-			this.txtDataByte1.Size = new System.Drawing.Size(32, 20);
+			this.txtDataByte1.Size = new System.Drawing.Size(38, 21);
 			this.txtDataByte1.TabIndex = 6;
 			this.txtDataByte1.Text = "00";
 			// 
 			// Label2
 			// 
-			this.Label2.Location = new System.Drawing.Point(8, 16);
+			this.Label2.Location = new System.Drawing.Point(10, 17);
 			this.Label2.Name = "Label2";
-			this.Label2.Size = new System.Drawing.Size(40, 16);
+			this.Label2.Size = new System.Drawing.Size(48, 17);
 			this.Label2.TabIndex = 14;
 			this.Label2.Text = "Arb ID";
+			this.Label2.Click += new System.EventHandler(this.Label2_Click);
 			// 
 			// GroupBox1
 			// 
@@ -434,50 +438,52 @@ namespace neoCSNet2003
 			this.GroupBox1.Controls.Add(this.cmdCloseDevice);
 			this.GroupBox1.Location = new System.Drawing.Point(0, 0);
 			this.GroupBox1.Name = "GroupBox1";
-			this.GroupBox1.Size = new System.Drawing.Size(536, 88);
+			this.GroupBox1.Size = new System.Drawing.Size(643, 95);
 			this.GroupBox1.TabIndex = 45;
 			this.GroupBox1.TabStop = false;
 			this.GroupBox1.Text = "Connecting";
+			this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
 			// 
 			// Label5
 			// 
-			this.Label5.Location = new System.Drawing.Point(400, 24);
+			this.Label5.Location = new System.Drawing.Point(480, 26);
 			this.Label5.Name = "Label5";
-			this.Label5.Size = new System.Drawing.Size(128, 16);
+			this.Label5.Size = new System.Drawing.Size(154, 17);
 			this.Label5.TabIndex = 44;
 			this.Label5.Text = "ICSNeo40.dll version";
 			// 
 			// cmdVersion
 			// 
-			this.cmdVersion.Location = new System.Drawing.Point(400, 48);
+			this.cmdVersion.Location = new System.Drawing.Point(480, 52);
 			this.cmdVersion.Name = "cmdVersion";
-			this.cmdVersion.Size = new System.Drawing.Size(120, 24);
+			this.cmdVersion.Size = new System.Drawing.Size(144, 26);
 			this.cmdVersion.TabIndex = 43;
 			this.cmdVersion.Text = "Version";
 			this.cmdVersion.Click += new System.EventHandler(this.cmdVersion_Click);
 			// 
 			// lblneoInfo
 			// 
-			this.lblneoInfo.Location = new System.Drawing.Point(152, 24);
+			this.lblneoInfo.Location = new System.Drawing.Point(182, 26);
 			this.lblneoInfo.Name = "lblneoInfo";
-			this.lblneoInfo.Size = new System.Drawing.Size(120, 16);
+			this.lblneoInfo.Size = new System.Drawing.Size(144, 17);
 			this.lblneoInfo.TabIndex = 2;
 			this.lblneoInfo.Text = "Port Not Opened";
+			this.lblneoInfo.Click += new System.EventHandler(this.lblneoInfo_Click);
 			// 
 			// CmdOpenFirstDevice
 			// 
-			this.CmdOpenFirstDevice.Location = new System.Drawing.Point(16, 24);
+			this.CmdOpenFirstDevice.Location = new System.Drawing.Point(19, 26);
 			this.CmdOpenFirstDevice.Name = "CmdOpenFirstDevice";
-			this.CmdOpenFirstDevice.Size = new System.Drawing.Size(120, 23);
+			this.CmdOpenFirstDevice.Size = new System.Drawing.Size(144, 25);
 			this.CmdOpenFirstDevice.TabIndex = 0;
 			this.CmdOpenFirstDevice.Text = "Open First Device";
 			this.CmdOpenFirstDevice.Click += new System.EventHandler(this.CmdOpenFirstDevice_Click);
 			// 
 			// cmdCloseDevice
 			// 
-			this.cmdCloseDevice.Location = new System.Drawing.Point(16, 56);
+			this.cmdCloseDevice.Location = new System.Drawing.Point(19, 60);
 			this.cmdCloseDevice.Name = "cmdCloseDevice";
-			this.cmdCloseDevice.Size = new System.Drawing.Size(120, 23);
+			this.cmdCloseDevice.Size = new System.Drawing.Size(144, 25);
 			this.cmdCloseDevice.TabIndex = 1;
 			this.cmdCloseDevice.Text = "CloseOpenDevice";
 			this.cmdCloseDevice.Click += new System.EventHandler(this.cmdCloseDevice_Click);
@@ -493,67 +499,68 @@ namespace neoCSNet2003
 			this.GroupBox4.Controls.Add(this.cmdReceive);
 			this.GroupBox4.Controls.Add(this.lstErrorHolder);
 			this.GroupBox4.Controls.Add(this.cmdGetErrors);
-			this.GroupBox4.Location = new System.Drawing.Point(0, 208);
+			this.GroupBox4.Location = new System.Drawing.Point(0, 224);
 			this.GroupBox4.Name = "GroupBox4";
-			this.GroupBox4.Size = new System.Drawing.Size(536, 264);
+			this.GroupBox4.Size = new System.Drawing.Size(643, 284);
 			this.GroupBox4.TabIndex = 47;
 			this.GroupBox4.TabStop = false;
 			this.GroupBox4.Text = "Receive Message";
 			// 
 			// lblWaitForRxMessageWithTimeOutResult
 			// 
-			this.lblWaitForRxMessageWithTimeOutResult.Location = new System.Drawing.Point(440, 16);
+			this.lblWaitForRxMessageWithTimeOutResult.Location = new System.Drawing.Point(528, 17);
 			this.lblWaitForRxMessageWithTimeOutResult.Name = "lblWaitForRxMessageWithTimeOutResult";
-			this.lblWaitForRxMessageWithTimeOutResult.Size = new System.Drawing.Size(88, 40);
+			this.lblWaitForRxMessageWithTimeOutResult.Size = new System.Drawing.Size(106, 43);
 			this.lblWaitForRxMessageWithTimeOutResult.TabIndex = 27;
 			this.lblWaitForRxMessageWithTimeOutResult.Text = "Status";
 			// 
 			// cmdWaitForMessageWithTimeOut
 			// 
-			this.cmdWaitForMessageWithTimeOut.Location = new System.Drawing.Point(336, 16);
+			this.cmdWaitForMessageWithTimeOut.Location = new System.Drawing.Point(403, 17);
 			this.cmdWaitForMessageWithTimeOut.Name = "cmdWaitForMessageWithTimeOut";
-			this.cmdWaitForMessageWithTimeOut.Size = new System.Drawing.Size(104, 40);
+			this.cmdWaitForMessageWithTimeOut.Size = new System.Drawing.Size(125, 43);
 			this.cmdWaitForMessageWithTimeOut.TabIndex = 26;
 			this.cmdWaitForMessageWithTimeOut.Text = "Wait for Message with Time Out";
 			this.cmdWaitForMessageWithTimeOut.Click += new System.EventHandler(this.cmdWaitForMessageWithTimeOut_Click);
 			// 
 			// chkAutoRead
 			// 
-			this.chkAutoRead.Location = new System.Drawing.Point(120, 32);
+			this.chkAutoRead.Location = new System.Drawing.Point(144, 34);
 			this.chkAutoRead.Name = "chkAutoRead";
-			this.chkAutoRead.Size = new System.Drawing.Size(80, 16);
+			this.chkAutoRead.Size = new System.Drawing.Size(96, 18);
 			this.chkAutoRead.TabIndex = 25;
 			this.chkAutoRead.Text = "AutoRead";
 			this.chkAutoRead.CheckedChanged += new System.EventHandler(this.chkAutoRead_CheckedChanged);
 			// 
 			// lblReadErrors
 			// 
-			this.lblReadErrors.Location = new System.Drawing.Point(200, 16);
+			this.lblReadErrors.Location = new System.Drawing.Point(240, 17);
 			this.lblReadErrors.Name = "lblReadErrors";
-			this.lblReadErrors.Size = new System.Drawing.Size(136, 16);
+			this.lblReadErrors.Size = new System.Drawing.Size(163, 17);
 			this.lblReadErrors.TabIndex = 24;
 			this.lblReadErrors.Text = "Number Errors : ";
 			// 
 			// lblReadCount
 			// 
-			this.lblReadCount.Location = new System.Drawing.Point(200, 40);
+			this.lblReadCount.Location = new System.Drawing.Point(240, 43);
 			this.lblReadCount.Name = "lblReadCount";
-			this.lblReadCount.Size = new System.Drawing.Size(136, 16);
+			this.lblReadCount.Size = new System.Drawing.Size(163, 17);
 			this.lblReadCount.TabIndex = 23;
 			this.lblReadCount.Text = "Number Read : ";
 			// 
 			// lstMessage
 			// 
-			this.lstMessage.Location = new System.Drawing.Point(8, 64);
+			this.lstMessage.ItemHeight = 12;
+			this.lstMessage.Location = new System.Drawing.Point(10, 69);
 			this.lstMessage.Name = "lstMessage";
-			this.lstMessage.Size = new System.Drawing.Size(520, 95);
+			this.lstMessage.Size = new System.Drawing.Size(624, 88);
 			this.lstMessage.TabIndex = 19;
 			// 
 			// cmdReceive
 			// 
-			this.cmdReceive.Location = new System.Drawing.Point(8, 16);
+			this.cmdReceive.Location = new System.Drawing.Point(10, 17);
 			this.cmdReceive.Name = "cmdReceive";
-			this.cmdReceive.Size = new System.Drawing.Size(104, 40);
+			this.cmdReceive.Size = new System.Drawing.Size(124, 43);
 			this.cmdReceive.TabIndex = 20;
 			this.cmdReceive.Text = "Get Messages";
 			this.cmdReceive.Click += new System.EventHandler(this.cmdReceive_Click);
@@ -561,24 +568,25 @@ namespace neoCSNet2003
 			// lstErrorHolder
 			// 
 			this.lstErrorHolder.HorizontalScrollbar = true;
-			this.lstErrorHolder.Location = new System.Drawing.Point(8, 184);
+			this.lstErrorHolder.ItemHeight = 12;
+			this.lstErrorHolder.Location = new System.Drawing.Point(10, 198);
 			this.lstErrorHolder.Name = "lstErrorHolder";
 			this.lstErrorHolder.ScrollAlwaysVisible = true;
-			this.lstErrorHolder.Size = new System.Drawing.Size(520, 69);
+			this.lstErrorHolder.Size = new System.Drawing.Size(624, 64);
 			this.lstErrorHolder.TabIndex = 21;
 			// 
 			// cmdGetErrors
 			// 
-			this.cmdGetErrors.Location = new System.Drawing.Point(8, 160);
+			this.cmdGetErrors.Location = new System.Drawing.Point(10, 172);
 			this.cmdGetErrors.Name = "cmdGetErrors";
-			this.cmdGetErrors.Size = new System.Drawing.Size(520, 24);
+			this.cmdGetErrors.Size = new System.Drawing.Size(624, 26);
 			this.cmdGetErrors.TabIndex = 22;
 			this.cmdGetErrors.Text = "Get Errors";
 			this.cmdGetErrors.Click += new System.EventHandler(this.cmdGetErrors_Click);
 			// 
 			// Label21
 			// 
-			this.Label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Label21.Location = new System.Drawing.Point(8, 48);
 			this.Label21.Name = "Label21";
 			this.Label21.Size = new System.Drawing.Size(100, 16);
@@ -602,10 +610,10 @@ namespace neoCSNet2003
 			// 
 			this.tccBaudSetType.Controls.Add(this.TabPage1);
 			this.tccBaudSetType.Controls.Add(this.TabPage2);
-			this.tccBaudSetType.Location = new System.Drawing.Point(8, 16);
+			this.tccBaudSetType.Location = new System.Drawing.Point(10, 17);
 			this.tccBaudSetType.Name = "tccBaudSetType";
 			this.tccBaudSetType.SelectedIndex = 0;
-			this.tccBaudSetType.Size = new System.Drawing.Size(272, 456);
+			this.tccBaudSetType.Size = new System.Drawing.Size(326, 491);
 			this.tccBaudSetType.TabIndex = 48;
 			// 
 			// TabPage1
@@ -617,47 +625,49 @@ namespace neoCSNet2003
 			this.TabPage1.Controls.Add(this.cmdSetBitRate);
 			this.TabPage1.Location = new System.Drawing.Point(4, 22);
 			this.TabPage1.Name = "TabPage1";
-			this.TabPage1.Size = new System.Drawing.Size(264, 430);
+			this.TabPage1.Size = new System.Drawing.Size(318, 465);
 			this.TabPage1.TabIndex = 0;
 			this.TabPage1.Text = "Quick Set";
 			// 
 			// Label6
 			// 
-			this.Label6.Location = new System.Drawing.Point(112, 8);
+			this.Label6.Location = new System.Drawing.Point(134, 9);
 			this.Label6.Name = "Label6";
-			this.Label6.Size = new System.Drawing.Size(72, 16);
+			this.Label6.Size = new System.Drawing.Size(87, 17);
 			this.Label6.TabIndex = 47;
 			this.Label6.Text = "Bit Rate";
 			// 
 			// lstNetworkBaudRate
 			// 
 			this.lstNetworkBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.lstNetworkBaudRate.Location = new System.Drawing.Point(8, 24);
+			this.lstNetworkBaudRate.Location = new System.Drawing.Point(10, 26);
 			this.lstNetworkBaudRate.Name = "lstNetworkBaudRate";
-			this.lstNetworkBaudRate.Size = new System.Drawing.Size(96, 21);
+			this.lstNetworkBaudRate.Size = new System.Drawing.Size(115, 20);
 			this.lstNetworkBaudRate.TabIndex = 43;
+			this.lstNetworkBaudRate.SelectedIndexChanged += new System.EventHandler(this.lstNetworkBaudRate_SelectedIndexChanged);
 			// 
 			// Label1
 			// 
-			this.Label1.Location = new System.Drawing.Point(8, 8);
+			this.Label1.Location = new System.Drawing.Point(10, 9);
 			this.Label1.Name = "Label1";
-			this.Label1.Size = new System.Drawing.Size(80, 16);
+			this.Label1.Size = new System.Drawing.Size(96, 17);
 			this.Label1.TabIndex = 44;
 			this.Label1.Text = "CAN Channel";
 			// 
 			// lstBaudRateToUse
 			// 
 			this.lstBaudRateToUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.lstBaudRateToUse.Location = new System.Drawing.Point(112, 24);
+			this.lstBaudRateToUse.Location = new System.Drawing.Point(134, 26);
 			this.lstBaudRateToUse.Name = "lstBaudRateToUse";
-			this.lstBaudRateToUse.Size = new System.Drawing.Size(96, 21);
+			this.lstBaudRateToUse.Size = new System.Drawing.Size(116, 20);
 			this.lstBaudRateToUse.TabIndex = 45;
+			this.lstBaudRateToUse.SelectedIndexChanged += new System.EventHandler(this.lstBaudRateToUse_SelectedIndexChanged);
 			// 
 			// cmdSetBitRate
 			// 
-			this.cmdSetBitRate.Location = new System.Drawing.Point(8, 48);
+			this.cmdSetBitRate.Location = new System.Drawing.Point(10, 52);
 			this.cmdSetBitRate.Name = "cmdSetBitRate";
-			this.cmdSetBitRate.Size = new System.Drawing.Size(200, 24);
+			this.cmdSetBitRate.Size = new System.Drawing.Size(240, 26);
 			this.cmdSetBitRate.TabIndex = 46;
 			this.cmdSetBitRate.Text = "Set Bit Rate";
 			this.cmdSetBitRate.Click += new System.EventHandler(this.cmdSetBitRate_Click);
@@ -667,7 +677,7 @@ namespace neoCSNet2003
 			this.TabPage2.Controls.Add(this.tccHardwareSelect);
 			this.TabPage2.Location = new System.Drawing.Point(4, 22);
 			this.TabPage2.Name = "TabPage2";
-			this.TabPage2.Size = new System.Drawing.Size(264, 430);
+			this.TabPage2.Size = new System.Drawing.Size(318, 465);
 			this.TabPage2.TabIndex = 1;
 			this.TabPage2.Text = "Advanced";
 			this.TabPage2.Visible = false;
@@ -681,16 +691,16 @@ namespace neoCSNet2003
 			this.tccHardwareSelect.Multiline = true;
 			this.tccHardwareSelect.Name = "tccHardwareSelect";
 			this.tccHardwareSelect.SelectedIndex = 0;
-			this.tccHardwareSelect.Size = new System.Drawing.Size(264, 432);
+			this.tccHardwareSelect.Size = new System.Drawing.Size(317, 465);
 			this.tccHardwareSelect.TabIndex = 1;
 			// 
 			// TabPage3
 			// 
 			this.TabPage3.Controls.Add(this.Group2);
-			this.TabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.TabPage3.Location = new System.Drawing.Point(23, 4);
+			this.TabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TabPage3.Location = new System.Drawing.Point(22, 4);
 			this.TabPage3.Name = "TabPage3";
-			this.TabPage3.Size = new System.Drawing.Size(237, 424);
+			this.TabPage3.Size = new System.Drawing.Size(291, 457);
 			this.TabPage3.TabIndex = 0;
 			this.TabPage3.Text = "Blue, Vcan2, Pro";
 			// 
@@ -710,103 +720,104 @@ namespace neoCSNet2003
 			this.Group2.Controls.Add(this.lstConfigInformation);
 			this.Group2.Location = new System.Drawing.Point(0, 0);
 			this.Group2.Name = "Group2";
-			this.Group2.Size = new System.Drawing.Size(200, 352);
+			this.Group2.Size = new System.Drawing.Size(240, 379);
 			this.Group2.TabIndex = 34;
 			this.Group2.TabStop = false;
 			this.Group2.Text = "Neo Config Information";
 			// 
 			// cmdSet250K
 			// 
-			this.cmdSet250K.Location = new System.Drawing.Point(120, 200);
+			this.cmdSet250K.Location = new System.Drawing.Point(144, 215);
 			this.cmdSet250K.Name = "cmdSet250K";
-			this.cmdSet250K.Size = new System.Drawing.Size(72, 40);
+			this.cmdSet250K.Size = new System.Drawing.Size(86, 43);
 			this.cmdSet250K.TabIndex = 11;
 			this.cmdSet250K.Text = "Set HS CAN 250K";
 			this.cmdSet250K.Click += new System.EventHandler(this.cmdSet250K_Click);
 			// 
 			// cmdSet500K
 			// 
-			this.cmdSet500K.Location = new System.Drawing.Point(120, 160);
+			this.cmdSet500K.Location = new System.Drawing.Point(144, 172);
 			this.cmdSet500K.Name = "cmdSet500K";
-			this.cmdSet500K.Size = new System.Drawing.Size(72, 40);
+			this.cmdSet500K.Size = new System.Drawing.Size(86, 43);
 			this.cmdSet500K.TabIndex = 10;
 			this.cmdSet500K.Text = "Set HS CAN 500K";
 			this.cmdSet500K.Click += new System.EventHandler(this.cmdSet500K_Click);
 			// 
 			// Label15
 			// 
-			this.Label15.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(255)), ((System.Byte)(192)), ((System.Byte)(128)));
-			this.Label15.Location = new System.Drawing.Point(8, 288);
+			this.Label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+			this.Label15.Location = new System.Drawing.Point(10, 310);
 			this.Label15.Name = "Label15";
-			this.Label15.Size = new System.Drawing.Size(184, 56);
+			this.Label15.Size = new System.Drawing.Size(220, 60);
 			this.Label15.TabIndex = 9;
 			this.Label15.Text = " TIP: use neoVI explorer to get the proper CNFs. ValueCAN CNFs are different than" +
-				" neoVI due to different CAN Chip speeds.";
+    " neoVI due to different CAN Chip speeds.";
 			// 
 			// cmdSendHSCanInfo
 			// 
-			this.cmdSendHSCanInfo.Location = new System.Drawing.Point(8, 248);
+			this.cmdSendHSCanInfo.Location = new System.Drawing.Point(10, 267);
 			this.cmdSendHSCanInfo.Name = "cmdSendHSCanInfo";
-			this.cmdSendHSCanInfo.Size = new System.Drawing.Size(192, 40);
+			this.cmdSendHSCanInfo.Size = new System.Drawing.Size(230, 43);
 			this.cmdSendHSCanInfo.TabIndex = 8;
 			this.cmdSendHSCanInfo.Text = "Send HS CAN Information";
 			this.cmdSendHSCanInfo.Click += new System.EventHandler(this.cmdSendHSCanInfo_Click);
 			// 
 			// txtCNF3
 			// 
-			this.txtCNF3.Location = new System.Drawing.Point(48, 216);
+			this.txtCNF3.Location = new System.Drawing.Point(58, 233);
 			this.txtCNF3.Name = "txtCNF3";
-			this.txtCNF3.Size = new System.Drawing.Size(56, 22);
+			this.txtCNF3.Size = new System.Drawing.Size(67, 22);
 			this.txtCNF3.TabIndex = 7;
 			this.txtCNF3.Text = "5";
 			// 
 			// txtCNF2
 			// 
-			this.txtCNF2.Location = new System.Drawing.Point(48, 192);
+			this.txtCNF2.Location = new System.Drawing.Point(58, 207);
 			this.txtCNF2.Name = "txtCNF2";
-			this.txtCNF2.Size = new System.Drawing.Size(56, 22);
+			this.txtCNF2.Size = new System.Drawing.Size(67, 22);
 			this.txtCNF2.TabIndex = 6;
 			this.txtCNF2.Text = "B8";
 			// 
 			// txtCNF1
 			// 
-			this.txtCNF1.Location = new System.Drawing.Point(48, 168);
+			this.txtCNF1.Location = new System.Drawing.Point(58, 181);
 			this.txtCNF1.Name = "txtCNF1";
-			this.txtCNF1.Size = new System.Drawing.Size(56, 22);
+			this.txtCNF1.Size = new System.Drawing.Size(67, 22);
 			this.txtCNF1.TabIndex = 5;
 			this.txtCNF1.TabStop = false;
 			this.txtCNF1.Text = "1";
+			this.txtCNF1.TextChanged += new System.EventHandler(this.txtCNF1_TextChanged);
 			// 
 			// Label10
 			// 
-			this.Label10.Location = new System.Drawing.Point(8, 216);
+			this.Label10.Location = new System.Drawing.Point(10, 233);
 			this.Label10.Name = "Label10";
-			this.Label10.Size = new System.Drawing.Size(40, 16);
+			this.Label10.Size = new System.Drawing.Size(48, 17);
 			this.Label10.TabIndex = 4;
 			this.Label10.Text = "CNF3";
 			// 
 			// Label9
 			// 
-			this.Label9.Location = new System.Drawing.Point(8, 192);
+			this.Label9.Location = new System.Drawing.Point(10, 207);
 			this.Label9.Name = "Label9";
-			this.Label9.Size = new System.Drawing.Size(40, 16);
+			this.Label9.Size = new System.Drawing.Size(48, 17);
 			this.Label9.TabIndex = 3;
 			this.Label9.Text = "CNF2";
 			// 
 			// Label8
 			// 
-			this.Label8.Location = new System.Drawing.Point(8, 168);
+			this.Label8.Location = new System.Drawing.Point(10, 181);
 			this.Label8.Name = "Label8";
-			this.Label8.Size = new System.Drawing.Size(40, 16);
+			this.Label8.Size = new System.Drawing.Size(48, 17);
 			this.Label8.TabIndex = 2;
 			this.Label8.Text = "CNF1";
 			// 
 			// cmdGetConfig
 			// 
 			this.cmdGetConfig.Cursor = System.Windows.Forms.Cursors.Arrow;
-			this.cmdGetConfig.Location = new System.Drawing.Point(8, 16);
+			this.cmdGetConfig.Location = new System.Drawing.Point(10, 17);
 			this.cmdGetConfig.Name = "cmdGetConfig";
-			this.cmdGetConfig.Size = new System.Drawing.Size(184, 24);
+			this.cmdGetConfig.Size = new System.Drawing.Size(220, 26);
 			this.cmdGetConfig.TabIndex = 1;
 			this.cmdGetConfig.Text = "Get Configuration";
 			this.cmdGetConfig.Click += new System.EventHandler(this.cmdGetConfig_Click);
@@ -814,9 +825,9 @@ namespace neoCSNet2003
 			// lstConfigInformation
 			// 
 			this.lstConfigInformation.ItemHeight = 16;
-			this.lstConfigInformation.Location = new System.Drawing.Point(8, 40);
+			this.lstConfigInformation.Location = new System.Drawing.Point(10, 43);
 			this.lstConfigInformation.Name = "lstConfigInformation";
-			this.lstConfigInformation.Size = new System.Drawing.Size(184, 116);
+			this.lstConfigInformation.Size = new System.Drawing.Size(220, 116);
 			this.lstConfigInformation.TabIndex = 0;
 			// 
 			// TabPage4
@@ -834,113 +845,117 @@ namespace neoCSNet2003
 			this.TabPage4.Controls.Add(this.txt3GPSeg1);
 			this.TabPage4.Controls.Add(this.label7);
 			this.TabPage4.Controls.Add(this.cmd3GGetSetting);
-			this.TabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.TabPage4.Location = new System.Drawing.Point(23, 4);
+			this.TabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TabPage4.Location = new System.Drawing.Point(22, 4);
 			this.TabPage4.Name = "TabPage4";
-			this.TabPage4.Size = new System.Drawing.Size(237, 424);
+			this.TabPage4.Size = new System.Drawing.Size(291, 457);
 			this.TabPage4.TabIndex = 1;
 			this.TabPage4.Text = "FIRE, Red, Vcan3";
 			this.TabPage4.Visible = false;
 			// 
 			// txt3GBRP
 			// 
-			this.txt3GBRP.Location = new System.Drawing.Point(8, 280);
+			this.txt3GBRP.Location = new System.Drawing.Point(10, 302);
 			this.txt3GBRP.Name = "txt3GBRP";
-			this.txt3GBRP.Size = new System.Drawing.Size(104, 22);
+			this.txt3GBRP.Size = new System.Drawing.Size(124, 22);
 			this.txt3GBRP.TabIndex = 25;
 			this.txt3GBRP.Text = "N/A";
 			// 
 			// Label23
 			// 
-			this.Label23.Location = new System.Drawing.Point(8, 264);
+			this.Label23.Location = new System.Drawing.Point(10, 284);
 			this.Label23.Name = "Label23";
-			this.Label23.Size = new System.Drawing.Size(100, 16);
+			this.Label23.Size = new System.Drawing.Size(120, 18);
 			this.Label23.TabIndex = 24;
 			this.Label23.Text = "BRP";
 			// 
 			// cmd3GSetSettings
 			// 
-			this.cmd3GSetSettings.Location = new System.Drawing.Point(8, 312);
+			this.cmd3GSetSettings.Location = new System.Drawing.Point(10, 336);
 			this.cmd3GSetSettings.Name = "cmd3GSetSettings";
-			this.cmd3GSetSettings.Size = new System.Drawing.Size(192, 32);
+			this.cmd3GSetSettings.Size = new System.Drawing.Size(230, 34);
 			this.cmd3GSetSettings.TabIndex = 21;
 			this.cmd3GSetSettings.Text = "Set G3 Settings";
 			this.cmd3GSetSettings.Click += new System.EventHandler(this.cmd3GSetSettings_Click);
 			// 
 			// Label17
 			// 
-			this.Label17.Location = new System.Drawing.Point(8, 216);
+			this.Label17.Location = new System.Drawing.Point(10, 233);
 			this.Label17.Name = "Label17";
-			this.Label17.Size = new System.Drawing.Size(152, 16);
+			this.Label17.Size = new System.Drawing.Size(182, 17);
 			this.Label17.TabIndex = 20;
 			this.Label17.Text = "Sync Jump Width";
 			// 
 			// Label18
 			// 
-			this.Label18.Location = new System.Drawing.Point(8, 168);
+			this.Label18.Location = new System.Drawing.Point(10, 181);
 			this.Label18.Name = "Label18";
-			this.Label18.Size = new System.Drawing.Size(152, 16);
+			this.Label18.Size = new System.Drawing.Size(182, 17);
 			this.Label18.TabIndex = 19;
 			this.Label18.Text = "Propagation delay";
 			// 
 			// Label19
 			// 
-			this.Label19.Location = new System.Drawing.Point(8, 120);
+			this.Label19.Location = new System.Drawing.Point(10, 129);
 			this.Label19.Name = "Label19";
-			this.Label19.Size = new System.Drawing.Size(152, 16);
+			this.Label19.Size = new System.Drawing.Size(182, 17);
 			this.Label19.TabIndex = 18;
 			this.Label19.Text = "Phase Segment 2";
 			// 
 			// Label20
 			// 
-			this.Label20.Location = new System.Drawing.Point(8, 72);
+			this.Label20.Location = new System.Drawing.Point(10, 78);
 			this.Label20.Name = "Label20";
-			this.Label20.Size = new System.Drawing.Size(136, 16);
+			this.Label20.Size = new System.Drawing.Size(163, 17);
 			this.Label20.TabIndex = 17;
 			this.Label20.Text = "Phase Segment 1";
 			// 
 			// txt3GSJumpW
 			// 
-			this.txt3GSJumpW.Location = new System.Drawing.Point(8, 232);
+			this.txt3GSJumpW.Location = new System.Drawing.Point(10, 250);
 			this.txt3GSJumpW.Name = "txt3GSJumpW";
+			this.txt3GSJumpW.Size = new System.Drawing.Size(120, 22);
 			this.txt3GSJumpW.TabIndex = 16;
 			this.txt3GSJumpW.Text = "N\\A";
 			// 
 			// txt3GPropDelay
 			// 
-			this.txt3GPropDelay.Location = new System.Drawing.Point(8, 184);
+			this.txt3GPropDelay.Location = new System.Drawing.Point(10, 198);
 			this.txt3GPropDelay.Name = "txt3GPropDelay";
+			this.txt3GPropDelay.Size = new System.Drawing.Size(120, 22);
 			this.txt3GPropDelay.TabIndex = 15;
 			this.txt3GPropDelay.Text = "N\\A";
 			// 
 			// txt3GPSeg2
 			// 
-			this.txt3GPSeg2.Location = new System.Drawing.Point(8, 136);
+			this.txt3GPSeg2.Location = new System.Drawing.Point(10, 146);
 			this.txt3GPSeg2.Name = "txt3GPSeg2";
+			this.txt3GPSeg2.Size = new System.Drawing.Size(120, 22);
 			this.txt3GPSeg2.TabIndex = 14;
 			this.txt3GPSeg2.Text = "N\\A";
 			// 
 			// txt3GPSeg1
 			// 
-			this.txt3GPSeg1.Location = new System.Drawing.Point(8, 88);
+			this.txt3GPSeg1.Location = new System.Drawing.Point(10, 95);
 			this.txt3GPSeg1.Name = "txt3GPSeg1";
+			this.txt3GPSeg1.Size = new System.Drawing.Size(120, 22);
 			this.txt3GPSeg1.TabIndex = 13;
 			this.txt3GPSeg1.Text = "N\\A";
 			// 
 			// label7
 			// 
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label7.Location = new System.Drawing.Point(8, 48);
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.Location = new System.Drawing.Point(10, 52);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(100, 16);
+			this.label7.Size = new System.Drawing.Size(120, 17);
 			this.label7.TabIndex = 12;
 			this.label7.Text = "HS CAN 1";
 			// 
 			// cmd3GGetSetting
 			// 
-			this.cmd3GGetSetting.Location = new System.Drawing.Point(8, 8);
+			this.cmd3GGetSetting.Location = new System.Drawing.Point(10, 9);
 			this.cmd3GGetSetting.Name = "cmd3GGetSetting";
-			this.cmd3GGetSetting.Size = new System.Drawing.Size(192, 32);
+			this.cmd3GGetSetting.Size = new System.Drawing.Size(230, 34);
 			this.cmd3GGetSetting.TabIndex = 11;
 			this.cmd3GGetSetting.Text = "Get 3G Settings";
 			this.cmd3GGetSetting.Click += new System.EventHandler(this.cmd3GGetSetting_Click);
@@ -948,17 +963,17 @@ namespace neoCSNet2003
 			// groupBox3
 			// 
 			this.groupBox3.Controls.Add(this.tccBaudSetType);
-			this.groupBox3.Location = new System.Drawing.Point(536, 0);
+			this.groupBox3.Location = new System.Drawing.Point(643, 0);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(288, 472);
+			this.groupBox3.Size = new System.Drawing.Size(346, 508);
 			this.groupBox3.TabIndex = 49;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Baud Rate";
 			// 
 			// Form1
 			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(824, 477);
+			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
+			this.ClientSize = new System.Drawing.Size(985, 514);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.GroupBox1);
 			this.Controls.Add(this.GroupBox4);
@@ -967,6 +982,7 @@ namespace neoCSNet2003
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.GroupBox2.ResumeLayout(false);
+			this.GroupBox2.PerformLayout();
 			this.GroupBox1.ResumeLayout(false);
 			this.GroupBox4.ResumeLayout(false);
 			this.tccBaudSetType.ResumeLayout(false);
@@ -975,7 +991,9 @@ namespace neoCSNet2003
 			this.tccHardwareSelect.ResumeLayout(false);
 			this.TabPage3.ResumeLayout(false);
 			this.Group2.ResumeLayout(false);
+			this.Group2.PerformLayout();
 			this.TabPage4.ResumeLayout(false);
+			this.TabPage4.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -987,10 +1005,12 @@ namespace neoCSNet2003
 		/// </summary>
 		/// 
 		int m_hObject;		 //handle for device
-		bool m_bPortOpen;	 //tells the port status of the device
+		bool m_bPortOpen;	 //设备状态
 		icsSpyMessage[] stMessages = new icsSpyMessage[20000];   //TempSpace for messages
+
+		//byte 是8 位无符号整数
 		byte[] NetworkIDConvert = new byte[15]; // Storage to convert listbox index to Network ID's 
-		int iOpenDeviceType; //Storage for the device type that is open
+		int iOpenDeviceType; //存储已经打开的设备类型
 
 		[STAThread]
 		static void Main() 
@@ -998,14 +1018,16 @@ namespace neoCSNet2003
 			Application.Run(new Form1());
 		}
 
+		//将数字字符串转化为数字
 		private int ConvertFromHex(string num) 
 		{
 			//To hold our converted unsigned integer32 value
 			uint uiHex = 0;
-			try 
+			//try 用于检查发生的异常，并帮助发送任何可能的异常
+			try
 			{
 				// Convert hex string to unsigned integer
-				uiHex = System.Convert.ToUInt32(num, 16);
+				uiHex = System.Convert.ToUInt32(num, 16);//将数字字符串转化为整形数字
 			}
 			catch (System.OverflowException) 
 			{
@@ -1013,16 +1035,18 @@ namespace neoCSNet2003
 			}
 			return Convert.ToInt32(  uiHex);
 		}
-
+		
+		//点击打开设备
 		private void CmdOpenFirstDevice_Click(object sender, System.EventArgs e)
 		{
 			int iResult;
-			NeoDevice ndNeoToOpen = new NeoDevice();	//Struct holding detected hardware information
-			byte[] bNetwork =  new byte[64];    //List of hardware IDs
-			int iNumberOfDevices;   //Number of hardware devices to look for 
+			NeoDevice ndNeoToOpen = new NeoDevice();    //该结构体中保存检测到的硬件信息
+			byte[] bNetwork =  new byte[64];    //列出硬件ID
+			int iNumberOfDevices;   //要查找的硬件设备数
 			int iCount;		 //counter
 
 			//check if the port is already open
+			//检查当前的端口是否已经被打开
 			if (m_bPortOpen == true) return;
 
 			//File NetworkID array
@@ -1049,7 +1073,7 @@ namespace neoCSNet2003
 				return;
 			}
 
-			//Open the first found device
+			//首次打开设备
 			iResult = icsNeoDll.icsneoOpenNeoDevice(ref ndNeoToOpen,ref m_hObject,ref bNetwork[0], 1, 0);
 			if (iResult==1)
 			{
@@ -1062,10 +1086,10 @@ namespace neoCSNet2003
 			}
 
 
-	//Set the device type for later use
+	//保存设备类型，后面要使用
 	iOpenDeviceType = ndNeoToOpen.DeviceType;
 
-	//display the connect hardware type
+	//显示连接的设备类型
 	switch(ndNeoToOpen.DeviceType)
 	{
 		case 1:
@@ -1090,16 +1114,17 @@ namespace neoCSNet2003
 			break;
 	}
 
-	//Set device open flag
+	//设置设备被打来的标志
 	m_bPortOpen = true;
 }
 
+//关闭设备所做的事情
 private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 {
 	int  iResult;
     int iNumberOfErrors=0;
 
-	//close the port
+	//关闭端口
     iResult = icsNeoDll.icsneoClosePort(m_hObject,ref iNumberOfErrors);
     if (iResult==1)
 	{
@@ -1110,16 +1135,17 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 		MessageBox.Show("Problem ClosingPort");
 	}
 
-    lblneoInfo.Text = "Port Not Opened";
+    lblneoInfo.Text = "Port Not Opened";//在屏幕上输出设备没有关闭
 
 	//Clear device type and open flag
     iOpenDeviceType = 0;
 	m_bPortOpen = false;
 }
 
+		//点击获取dll版本号的按钮
 		private void cmdVersion_Click(object sender, System.EventArgs e)
 		{
-			//get version information and send to hardware.
+			//调用库函数获取DLL的版本号
 			cmdVersion.Text = Convert.ToString(icsNeoDll.icsneoGetDLLVersion());
 		}
 
@@ -1203,6 +1229,7 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
         
 		}
 
+		//点击发送命令
 		private void cmdTransmit_Click(object sender, System.EventArgs e)
 		{
 			long lResult;
@@ -1214,11 +1241,12 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 			// Has the uset open neoVI yet?;
 			if (m_bPortOpen==false) 
 			{
-				MessageBox.Show("neoVI not opened");
+				MessageBox.Show("Vspy 没有打开！！！");
 				return; // do not read messages if we haven't opened neoVI yet
 			}
 	
 			// Read the Network we will transmit on (indicated by lstNetwork ListBox)
+			//读取当期网络类型
 			lNetworkID = lstNetwork.SelectedIndex ;
 	
 			// Is this a CAN network or a J1850/ISO one?
@@ -1226,6 +1254,8 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 			{
 				// load the message structure
 				stMessagesTx.NetworkID = Convert.ToByte(lNetworkID);
+
+				//是否使用扩展ID
 				if (chkExtendedID.Checked == true)
 				{
 					//Make id Extended
@@ -1236,11 +1266,16 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 					//Use Normal ID
 					stMessagesTx.StatusBitField = 0;
 				}
+				//读取CAN ID
 				stMessagesTx.ArbIDOrHeader = ConvertFromHex(txtArbID.Text);            // The ArbID
+				//读取CAN 消息长度
 				stMessagesTx.NumberBytesData = Convert.ToByte(lstNumberOfBytes.SelectedIndex);         // The number of Data Bytes
+
+				//限制数据长度8
 				if (stMessagesTx.NumberBytesData > 8) stMessagesTx.NumberBytesData = 8; // You can only have 8 databytes with CAN
 				// Load all of the data bytes in the structure
 	
+				//赋值数据部分
 				stMessagesTx.Data1 = Convert.ToByte(ConvertFromHex(txtDataByte1.Text));
 				stMessagesTx.Data2 = Convert.ToByte(ConvertFromHex(txtDataByte2.Text));
 				stMessagesTx.Data3 = Convert.ToByte(ConvertFromHex(txtDataByte3.Text));
@@ -1286,9 +1321,10 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 	
 			}
 	
-			// Transmit the assembled message
+			// 发送消息
 			lResult=icsNeoDll.icsneoTxMessages(m_hObject,ref stMessagesTx,Convert.ToInt32(lNetworkID),1);
-			// Test the returned result
+
+			// 检查发送的结果
 			if (lResult!=1) 
 			{
 				MessageBox.Show("Problem Transmitting Message");
@@ -1754,7 +1790,45 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 			}
 																	
 		}
-	
 
+		private void lstNetworkBaudRate_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void lblneoInfo_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtArbID_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Label2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void lstNetwork_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void lstBaudRateToUse_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void GroupBox1_Enter(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtCNF1_TextChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

@@ -1,21 +1,24 @@
-Microsoft Visual Studio Solution File, Format Version 8.00
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "neoCSNet2003", "neoCSNet2003.csproj", "{A512D489-9395-493A-9651-6987B13CEB1E}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		Debug = Debug
-		Release = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{A512D489-9395-493A-9651-6987B13CEB1E}.Debug.ActiveCfg = Debug|.NET
-		{A512D489-9395-493A-9651-6987B13CEB1E}.Debug.Build.0 = Debug|.NET
-		{A512D489-9395-493A-9651-6987B13CEB1E}.Release.ActiveCfg = Release|.NET
-		{A512D489-9395-493A-9651-6987B13CEB1E}.Release.Build.0 = Release|.NET
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A512D489-9395-493A-9651-6987B13CEB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+		SolutionGuid = {EF29966F-829C-449E-AC1B-48E615DAF622}
 	EndGlobalSection
 EndGlobal
