@@ -49,9 +49,9 @@ namespace neoCSNet2003
 		internal System.Windows.Forms.CheckBox chkAutoRead;
 		internal System.Windows.Forms.Label lblReadErrors;
 		internal System.Windows.Forms.Label lblReadCount;
-		internal System.Windows.Forms.ListBox lstMessage;
+		internal System.Windows.Forms.ListBox 接收报文显示;
 		internal System.Windows.Forms.Button cmdReceive;
-		internal System.Windows.Forms.ListBox lstErrorHolder;
+		internal System.Windows.Forms.ListBox 错误显示;
 		internal System.Windows.Forms.Button cmdGetErrors;
 		internal System.Windows.Forms.Label Label21;
 		internal System.Windows.Forms.Button cmd3GGetSettings;
@@ -94,6 +94,23 @@ namespace neoCSNet2003
 		internal System.Windows.Forms.Label label7;
 		internal System.Windows.Forms.Button cmd3GGetSetting;
 		private System.Windows.Forms.GroupBox groupBox3;
+		private TabControl 连接发送;
+		private TabPage tabPage5;
+		private TabPage tabPage6;
+		private TabPage tabPage8;
+		private ProgressBar progressBar1;
+		private OpenFileDialog openFileDialog1;
+		private TextBox textBox1;
+		private Button button3;
+		private TextBox textBox2;
+		private Button button2;
+		private Button button1;
+		private Label label11;
+		private Button button4;
+		private TextBox textBox3;
+		private GroupBox 选择flash驱动;
+		private GroupBox groupBox5;
+		private GroupBox groupBox6;
 		private System.ComponentModel.IContainer components;
 
 		public Form1()
@@ -164,9 +181,9 @@ namespace neoCSNet2003
 			this.chkAutoRead = new System.Windows.Forms.CheckBox();
 			this.lblReadErrors = new System.Windows.Forms.Label();
 			this.lblReadCount = new System.Windows.Forms.Label();
-			this.lstMessage = new System.Windows.Forms.ListBox();
+			this.接收报文显示 = new System.Windows.Forms.ListBox();
 			this.cmdReceive = new System.Windows.Forms.Button();
-			this.lstErrorHolder = new System.Windows.Forms.ListBox();
+			this.错误显示 = new System.Windows.Forms.ListBox();
 			this.cmdGetErrors = new System.Windows.Forms.Button();
 			this.Label21 = new System.Windows.Forms.Label();
 			this.cmd3GGetSettings = new System.Windows.Forms.Button();
@@ -209,6 +226,23 @@ namespace neoCSNet2003
 			this.label7 = new System.Windows.Forms.Label();
 			this.cmd3GGetSetting = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.连接发送 = new System.Windows.Forms.TabControl();
+			this.tabPage5 = new System.Windows.Forms.TabPage();
+			this.tabPage6 = new System.Windows.Forms.TabPage();
+			this.tabPage8 = new System.Windows.Forms.TabPage();
+			this.progressBar1 = new System.Windows.Forms.ProgressBar();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.button3 = new System.Windows.Forms.Button();
+			this.label11 = new System.Windows.Forms.Label();
+			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.button4 = new System.Windows.Forms.Button();
+			this.选择flash驱动 = new System.Windows.Forms.GroupBox();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
 			this.GroupBox2.SuspendLayout();
 			this.GroupBox1.SuspendLayout();
 			this.GroupBox4.SuspendLayout();
@@ -220,6 +254,9 @@ namespace neoCSNet2003
 			this.Group2.SuspendLayout();
 			this.TabPage4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
+			this.连接发送.SuspendLayout();
+			this.tabPage6.SuspendLayout();
+			this.tabPage8.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// GroupBox2
@@ -244,12 +281,12 @@ namespace neoCSNet2003
 			this.GroupBox2.Controls.Add(this.txtDataByte8);
 			this.GroupBox2.Controls.Add(this.txtDataByte1);
 			this.GroupBox2.Controls.Add(this.Label2);
-			this.GroupBox2.Location = new System.Drawing.Point(0, 95);
+			this.GroupBox2.Location = new System.Drawing.Point(6, 101);
 			this.GroupBox2.Name = "GroupBox2";
 			this.GroupBox2.Size = new System.Drawing.Size(643, 127);
 			this.GroupBox2.TabIndex = 46;
 			this.GroupBox2.TabStop = false;
-			this.GroupBox2.Text = "Transmit Messages";
+			this.GroupBox2.Text = "发送消息";
 			// 
 			// chkExtendedID
 			// 
@@ -257,7 +294,7 @@ namespace neoCSNet2003
 			this.chkExtendedID.Name = "chkExtendedID";
 			this.chkExtendedID.Size = new System.Drawing.Size(192, 17);
 			this.chkExtendedID.TabIndex = 26;
-			this.chkExtendedID.Text = "Send Extended ID";
+			this.chkExtendedID.Text = "发送扩展帧";
 			// 
 			// txtDataByte11
 			// 
@@ -310,7 +347,7 @@ namespace neoCSNet2003
 			this.Label14.Name = "Label14";
 			this.Label14.Size = new System.Drawing.Size(58, 17);
 			this.Label14.TabIndex = 21;
-			this.Label14.Text = "Network";
+			this.Label14.Text = "网络";
 			// 
 			// lstNetwork
 			// 
@@ -325,9 +362,9 @@ namespace neoCSNet2003
 			// 
 			this.Label3.Location = new System.Drawing.Point(278, 43);
 			this.Label3.Name = "Label3";
-			this.Label3.Size = new System.Drawing.Size(77, 17);
+			this.Label3.Size = new System.Drawing.Size(48, 17);
 			this.Label3.TabIndex = 15;
-			this.Label3.Text = "Data Bytes";
+			this.Label3.Text = "数据";
 			// 
 			// txtDataByte2
 			// 
@@ -343,7 +380,7 @@ namespace neoCSNet2003
 			this.cmdTransmit.Name = "cmdTransmit";
 			this.cmdTransmit.Size = new System.Drawing.Size(422, 26);
 			this.cmdTransmit.TabIndex = 18;
-			this.cmdTransmit.Text = "Transmit";
+			this.cmdTransmit.Text = "发送";
 			this.cmdTransmit.Click += new System.EventHandler(this.cmdTransmit_Click);
 			// 
 			// txtDataByte3
@@ -357,11 +394,11 @@ namespace neoCSNet2003
 			// Label4
 			// 
 			this.Label4.Cursor = System.Windows.Forms.Cursors.SizeAll;
-			this.Label4.Location = new System.Drawing.Point(10, 60);
+			this.Label4.Location = new System.Drawing.Point(8, 69);
 			this.Label4.Name = "Label4";
-			this.Label4.Size = new System.Drawing.Size(76, 35);
+			this.Label4.Size = new System.Drawing.Size(57, 20);
 			this.Label4.TabIndex = 18;
-			this.Label4.Text = "Number of Data Bytes";
+			this.Label4.Text = "报文长度";
 			// 
 			// txtDataByte4
 			// 
@@ -426,7 +463,7 @@ namespace neoCSNet2003
 			this.Label2.Name = "Label2";
 			this.Label2.Size = new System.Drawing.Size(48, 17);
 			this.Label2.TabIndex = 14;
-			this.Label2.Text = "Arb ID";
+			this.Label2.Text = "CAN ID";
 			this.Label2.Click += new System.EventHandler(this.Label2_Click);
 			// 
 			// GroupBox1
@@ -436,12 +473,12 @@ namespace neoCSNet2003
 			this.GroupBox1.Controls.Add(this.lblneoInfo);
 			this.GroupBox1.Controls.Add(this.CmdOpenFirstDevice);
 			this.GroupBox1.Controls.Add(this.cmdCloseDevice);
-			this.GroupBox1.Location = new System.Drawing.Point(0, 0);
+			this.GroupBox1.Location = new System.Drawing.Point(6, 6);
 			this.GroupBox1.Name = "GroupBox1";
 			this.GroupBox1.Size = new System.Drawing.Size(643, 95);
 			this.GroupBox1.TabIndex = 45;
 			this.GroupBox1.TabStop = false;
-			this.GroupBox1.Text = "Connecting";
+			this.GroupBox1.Text = "连接";
 			this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
 			// 
 			// Label5
@@ -450,7 +487,7 @@ namespace neoCSNet2003
 			this.Label5.Name = "Label5";
 			this.Label5.Size = new System.Drawing.Size(154, 17);
 			this.Label5.TabIndex = 44;
-			this.Label5.Text = "ICSNeo40.dll version";
+			this.Label5.Text = "ICSNeo40.dll 版本号";
 			// 
 			// cmdVersion
 			// 
@@ -458,7 +495,7 @@ namespace neoCSNet2003
 			this.cmdVersion.Name = "cmdVersion";
 			this.cmdVersion.Size = new System.Drawing.Size(144, 26);
 			this.cmdVersion.TabIndex = 43;
-			this.cmdVersion.Text = "Version";
+			this.cmdVersion.Text = "版本";
 			this.cmdVersion.Click += new System.EventHandler(this.cmdVersion_Click);
 			// 
 			// lblneoInfo
@@ -467,7 +504,7 @@ namespace neoCSNet2003
 			this.lblneoInfo.Name = "lblneoInfo";
 			this.lblneoInfo.Size = new System.Drawing.Size(144, 17);
 			this.lblneoInfo.TabIndex = 2;
-			this.lblneoInfo.Text = "Port Not Opened";
+			this.lblneoInfo.Text = "端口没有被打开";
 			this.lblneoInfo.Click += new System.EventHandler(this.lblneoInfo_Click);
 			// 
 			// CmdOpenFirstDevice
@@ -476,7 +513,7 @@ namespace neoCSNet2003
 			this.CmdOpenFirstDevice.Name = "CmdOpenFirstDevice";
 			this.CmdOpenFirstDevice.Size = new System.Drawing.Size(144, 25);
 			this.CmdOpenFirstDevice.TabIndex = 0;
-			this.CmdOpenFirstDevice.Text = "Open First Device";
+			this.CmdOpenFirstDevice.Text = "打开设备";
 			this.CmdOpenFirstDevice.Click += new System.EventHandler(this.CmdOpenFirstDevice_Click);
 			// 
 			// cmdCloseDevice
@@ -485,7 +522,7 @@ namespace neoCSNet2003
 			this.cmdCloseDevice.Name = "cmdCloseDevice";
 			this.cmdCloseDevice.Size = new System.Drawing.Size(144, 25);
 			this.cmdCloseDevice.TabIndex = 1;
-			this.cmdCloseDevice.Text = "CloseOpenDevice";
+			this.cmdCloseDevice.Text = "关闭设备";
 			this.cmdCloseDevice.Click += new System.EventHandler(this.cmdCloseDevice_Click);
 			// 
 			// GroupBox4
@@ -495,16 +532,16 @@ namespace neoCSNet2003
 			this.GroupBox4.Controls.Add(this.chkAutoRead);
 			this.GroupBox4.Controls.Add(this.lblReadErrors);
 			this.GroupBox4.Controls.Add(this.lblReadCount);
-			this.GroupBox4.Controls.Add(this.lstMessage);
+			this.GroupBox4.Controls.Add(this.接收报文显示);
 			this.GroupBox4.Controls.Add(this.cmdReceive);
-			this.GroupBox4.Controls.Add(this.lstErrorHolder);
+			this.GroupBox4.Controls.Add(this.错误显示);
 			this.GroupBox4.Controls.Add(this.cmdGetErrors);
-			this.GroupBox4.Location = new System.Drawing.Point(0, 224);
+			this.GroupBox4.Location = new System.Drawing.Point(6, 230);
 			this.GroupBox4.Name = "GroupBox4";
 			this.GroupBox4.Size = new System.Drawing.Size(643, 284);
 			this.GroupBox4.TabIndex = 47;
 			this.GroupBox4.TabStop = false;
-			this.GroupBox4.Text = "Receive Message";
+			this.GroupBox4.Text = "接收消息";
 			// 
 			// lblWaitForRxMessageWithTimeOutResult
 			// 
@@ -512,7 +549,7 @@ namespace neoCSNet2003
 			this.lblWaitForRxMessageWithTimeOutResult.Name = "lblWaitForRxMessageWithTimeOutResult";
 			this.lblWaitForRxMessageWithTimeOutResult.Size = new System.Drawing.Size(106, 43);
 			this.lblWaitForRxMessageWithTimeOutResult.TabIndex = 27;
-			this.lblWaitForRxMessageWithTimeOutResult.Text = "Status";
+			this.lblWaitForRxMessageWithTimeOutResult.Text = "状态";
 			// 
 			// cmdWaitForMessageWithTimeOut
 			// 
@@ -520,7 +557,7 @@ namespace neoCSNet2003
 			this.cmdWaitForMessageWithTimeOut.Name = "cmdWaitForMessageWithTimeOut";
 			this.cmdWaitForMessageWithTimeOut.Size = new System.Drawing.Size(125, 43);
 			this.cmdWaitForMessageWithTimeOut.TabIndex = 26;
-			this.cmdWaitForMessageWithTimeOut.Text = "Wait for Message with Time Out";
+			this.cmdWaitForMessageWithTimeOut.Text = "等待接收报文超时";
 			this.cmdWaitForMessageWithTimeOut.Click += new System.EventHandler(this.cmdWaitForMessageWithTimeOut_Click);
 			// 
 			// chkAutoRead
@@ -529,7 +566,7 @@ namespace neoCSNet2003
 			this.chkAutoRead.Name = "chkAutoRead";
 			this.chkAutoRead.Size = new System.Drawing.Size(96, 18);
 			this.chkAutoRead.TabIndex = 25;
-			this.chkAutoRead.Text = "AutoRead";
+			this.chkAutoRead.Text = "自动接收";
 			this.chkAutoRead.CheckedChanged += new System.EventHandler(this.chkAutoRead_CheckedChanged);
 			// 
 			// lblReadErrors
@@ -538,7 +575,7 @@ namespace neoCSNet2003
 			this.lblReadErrors.Name = "lblReadErrors";
 			this.lblReadErrors.Size = new System.Drawing.Size(163, 17);
 			this.lblReadErrors.TabIndex = 24;
-			this.lblReadErrors.Text = "Number Errors : ";
+			this.lblReadErrors.Text = "错误计数 : ";
 			// 
 			// lblReadCount
 			// 
@@ -546,15 +583,15 @@ namespace neoCSNet2003
 			this.lblReadCount.Name = "lblReadCount";
 			this.lblReadCount.Size = new System.Drawing.Size(163, 17);
 			this.lblReadCount.TabIndex = 23;
-			this.lblReadCount.Text = "Number Read : ";
+			this.lblReadCount.Text = "报文计数 : ";
 			// 
-			// lstMessage
+			// 接收报文显示
 			// 
-			this.lstMessage.ItemHeight = 12;
-			this.lstMessage.Location = new System.Drawing.Point(10, 69);
-			this.lstMessage.Name = "lstMessage";
-			this.lstMessage.Size = new System.Drawing.Size(624, 88);
-			this.lstMessage.TabIndex = 19;
+			this.接收报文显示.ItemHeight = 12;
+			this.接收报文显示.Location = new System.Drawing.Point(10, 69);
+			this.接收报文显示.Name = "接收报文显示";
+			this.接收报文显示.Size = new System.Drawing.Size(624, 88);
+			this.接收报文显示.TabIndex = 19;
 			// 
 			// cmdReceive
 			// 
@@ -562,18 +599,18 @@ namespace neoCSNet2003
 			this.cmdReceive.Name = "cmdReceive";
 			this.cmdReceive.Size = new System.Drawing.Size(124, 43);
 			this.cmdReceive.TabIndex = 20;
-			this.cmdReceive.Text = "Get Messages";
+			this.cmdReceive.Text = "接收报文";
 			this.cmdReceive.Click += new System.EventHandler(this.cmdReceive_Click);
 			// 
-			// lstErrorHolder
+			// 错误显示
 			// 
-			this.lstErrorHolder.HorizontalScrollbar = true;
-			this.lstErrorHolder.ItemHeight = 12;
-			this.lstErrorHolder.Location = new System.Drawing.Point(10, 198);
-			this.lstErrorHolder.Name = "lstErrorHolder";
-			this.lstErrorHolder.ScrollAlwaysVisible = true;
-			this.lstErrorHolder.Size = new System.Drawing.Size(624, 64);
-			this.lstErrorHolder.TabIndex = 21;
+			this.错误显示.HorizontalScrollbar = true;
+			this.错误显示.ItemHeight = 12;
+			this.错误显示.Location = new System.Drawing.Point(10, 198);
+			this.错误显示.Name = "错误显示";
+			this.错误显示.ScrollAlwaysVisible = true;
+			this.错误显示.Size = new System.Drawing.Size(624, 64);
+			this.错误显示.TabIndex = 21;
 			// 
 			// cmdGetErrors
 			// 
@@ -581,7 +618,7 @@ namespace neoCSNet2003
 			this.cmdGetErrors.Name = "cmdGetErrors";
 			this.cmdGetErrors.Size = new System.Drawing.Size(624, 26);
 			this.cmdGetErrors.TabIndex = 22;
-			this.cmdGetErrors.Text = "Get Errors";
+			this.cmdGetErrors.Text = "获取错误";
 			this.cmdGetErrors.Click += new System.EventHandler(this.cmdGetErrors_Click);
 			// 
 			// Label21
@@ -610,7 +647,7 @@ namespace neoCSNet2003
 			// 
 			this.tccBaudSetType.Controls.Add(this.TabPage1);
 			this.tccBaudSetType.Controls.Add(this.TabPage2);
-			this.tccBaudSetType.Location = new System.Drawing.Point(10, 17);
+			this.tccBaudSetType.Location = new System.Drawing.Point(14, 17);
 			this.tccBaudSetType.Name = "tccBaudSetType";
 			this.tccBaudSetType.SelectedIndex = 0;
 			this.tccBaudSetType.Size = new System.Drawing.Size(326, 491);
@@ -627,7 +664,7 @@ namespace neoCSNet2003
 			this.TabPage1.Name = "TabPage1";
 			this.TabPage1.Size = new System.Drawing.Size(318, 465);
 			this.TabPage1.TabIndex = 0;
-			this.TabPage1.Text = "Quick Set";
+			this.TabPage1.Text = "快速设置";
 			// 
 			// Label6
 			// 
@@ -635,7 +672,7 @@ namespace neoCSNet2003
 			this.Label6.Name = "Label6";
 			this.Label6.Size = new System.Drawing.Size(87, 17);
 			this.Label6.TabIndex = 47;
-			this.Label6.Text = "Bit Rate";
+			this.Label6.Text = "波特率";
 			// 
 			// lstNetworkBaudRate
 			// 
@@ -652,7 +689,7 @@ namespace neoCSNet2003
 			this.Label1.Name = "Label1";
 			this.Label1.Size = new System.Drawing.Size(96, 17);
 			this.Label1.TabIndex = 44;
-			this.Label1.Text = "CAN Channel";
+			this.Label1.Text = "CAN通道";
 			// 
 			// lstBaudRateToUse
 			// 
@@ -669,7 +706,7 @@ namespace neoCSNet2003
 			this.cmdSetBitRate.Name = "cmdSetBitRate";
 			this.cmdSetBitRate.Size = new System.Drawing.Size(240, 26);
 			this.cmdSetBitRate.TabIndex = 46;
-			this.cmdSetBitRate.Text = "Set Bit Rate";
+			this.cmdSetBitRate.Text = "设置波特率";
 			this.cmdSetBitRate.Click += new System.EventHandler(this.cmdSetBitRate_Click);
 			// 
 			// TabPage2
@@ -679,7 +716,7 @@ namespace neoCSNet2003
 			this.TabPage2.Name = "TabPage2";
 			this.TabPage2.Size = new System.Drawing.Size(318, 465);
 			this.TabPage2.TabIndex = 1;
-			this.TabPage2.Text = "Advanced";
+			this.TabPage2.Text = "高级设置";
 			this.TabPage2.Visible = false;
 			// 
 			// tccHardwareSelect
@@ -723,7 +760,7 @@ namespace neoCSNet2003
 			this.Group2.Size = new System.Drawing.Size(240, 379);
 			this.Group2.TabIndex = 34;
 			this.Group2.TabStop = false;
-			this.Group2.Text = "Neo Config Information";
+			this.Group2.Text = "Neo 配置信息";
 			// 
 			// cmdSet250K
 			// 
@@ -746,12 +783,12 @@ namespace neoCSNet2003
 			// Label15
 			// 
 			this.Label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-			this.Label15.Location = new System.Drawing.Point(10, 310);
+			this.Label15.Location = new System.Drawing.Point(10, 319);
 			this.Label15.Name = "Label15";
-			this.Label15.Size = new System.Drawing.Size(220, 60);
+			this.Label15.Size = new System.Drawing.Size(230, 60);
 			this.Label15.TabIndex = 9;
-			this.Label15.Text = " TIP: use neoVI explorer to get the proper CNFs. ValueCAN CNFs are different than" +
-    " neoVI due to different CAN Chip speeds.";
+			this.Label15.Text = " 提示：使用neoVI资源管理器获取正确的CNF。 由于CAN芯片速度不同，ValueCAN CNF与neoVI不同。";
+			this.Label15.Click += new System.EventHandler(this.Label15_Click);
 			// 
 			// cmdSendHSCanInfo
 			// 
@@ -759,7 +796,7 @@ namespace neoCSNet2003
 			this.cmdSendHSCanInfo.Name = "cmdSendHSCanInfo";
 			this.cmdSendHSCanInfo.Size = new System.Drawing.Size(230, 43);
 			this.cmdSendHSCanInfo.TabIndex = 8;
-			this.cmdSendHSCanInfo.Text = "Send HS CAN Information";
+			this.cmdSendHSCanInfo.Text = "发送高速CAN消息";
 			this.cmdSendHSCanInfo.Click += new System.EventHandler(this.cmdSendHSCanInfo_Click);
 			// 
 			// txtCNF3
@@ -819,7 +856,7 @@ namespace neoCSNet2003
 			this.cmdGetConfig.Name = "cmdGetConfig";
 			this.cmdGetConfig.Size = new System.Drawing.Size(220, 26);
 			this.cmdGetConfig.TabIndex = 1;
-			this.cmdGetConfig.Text = "Get Configuration";
+			this.cmdGetConfig.Text = "获取配置";
 			this.cmdGetConfig.Click += new System.EventHandler(this.cmdGetConfig_Click);
 			// 
 			// lstConfigInformation
@@ -963,21 +1000,179 @@ namespace neoCSNet2003
 			// groupBox3
 			// 
 			this.groupBox3.Controls.Add(this.tccBaudSetType);
-			this.groupBox3.Location = new System.Drawing.Point(643, 0);
+			this.groupBox3.Location = new System.Drawing.Point(649, 6);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(346, 508);
 			this.groupBox3.TabIndex = 49;
 			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Baud Rate";
+			this.groupBox3.Text = "波特率";
+			// 
+			// 连接发送
+			// 
+			this.连接发送.Controls.Add(this.tabPage8);
+			this.连接发送.Controls.Add(this.tabPage6);
+			this.连接发送.Controls.Add(this.tabPage5);
+			this.连接发送.Location = new System.Drawing.Point(12, 12);
+			this.连接发送.Name = "连接发送";
+			this.连接发送.SelectedIndex = 0;
+			this.连接发送.Size = new System.Drawing.Size(1016, 547);
+			this.连接发送.TabIndex = 50;
+			// 
+			// tabPage5
+			// 
+			this.tabPage5.Location = new System.Drawing.Point(4, 22);
+			this.tabPage5.Name = "tabPage5";
+			this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage5.Size = new System.Drawing.Size(1008, 521);
+			this.tabPage5.TabIndex = 0;
+			this.tabPage5.Text = "使用帮助";
+			this.tabPage5.UseVisualStyleBackColor = true;
+			// 
+			// tabPage6
+			// 
+			this.tabPage6.Controls.Add(this.button4);
+			this.tabPage6.Controls.Add(this.textBox3);
+			this.tabPage6.Controls.Add(this.label11);
+			this.tabPage6.Controls.Add(this.button3);
+			this.tabPage6.Controls.Add(this.textBox2);
+			this.tabPage6.Controls.Add(this.button2);
+			this.tabPage6.Controls.Add(this.button1);
+			this.tabPage6.Controls.Add(this.textBox1);
+			this.tabPage6.Controls.Add(this.progressBar1);
+			this.tabPage6.Controls.Add(this.选择flash驱动);
+			this.tabPage6.Controls.Add(this.groupBox5);
+			this.tabPage6.Controls.Add(this.groupBox6);
+			this.tabPage6.Location = new System.Drawing.Point(4, 22);
+			this.tabPage6.Name = "tabPage6";
+			this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage6.Size = new System.Drawing.Size(1008, 521);
+			this.tabPage6.TabIndex = 1;
+			this.tabPage6.Text = "CAN升级：";
+			this.tabPage6.UseVisualStyleBackColor = true;
+			// 
+			// tabPage8
+			// 
+			this.tabPage8.Controls.Add(this.GroupBox1);
+			this.tabPage8.Controls.Add(this.groupBox3);
+			this.tabPage8.Controls.Add(this.GroupBox2);
+			this.tabPage8.Controls.Add(this.GroupBox4);
+			this.tabPage8.Location = new System.Drawing.Point(4, 22);
+			this.tabPage8.Name = "tabPage8";
+			this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage8.Size = new System.Drawing.Size(1008, 521);
+			this.tabPage8.TabIndex = 3;
+			this.tabPage8.Text = "CAN终端";
+			this.tabPage8.UseVisualStyleBackColor = true;
+			// 
+			// progressBar1
+			// 
+			this.progressBar1.Location = new System.Drawing.Point(46, 175);
+			this.progressBar1.Name = "progressBar1";
+			this.progressBar1.Size = new System.Drawing.Size(897, 45);
+			this.progressBar1.TabIndex = 0;
+			// 
+			// openFileDialog1
+			// 
+			this.openFileDialog1.FileName = "openFileDialog1";
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(66, 116);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(763, 21);
+			this.textBox1.TabIndex = 1;
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(46, 267);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(568, 95);
+			this.button1.TabIndex = 2;
+			this.button1.Text = "开始升级";
+			this.button1.UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(671, 292);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(90, 21);
+			this.button2.TabIndex = 4;
+			this.button2.Text = "读取版本号";
+			this.button2.UseVisualStyleBackColor = true;
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(767, 293);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(164, 21);
+			this.textBox2.TabIndex = 5;
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(880, 116);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(51, 23);
+			this.button3.TabIndex = 6;
+			this.button3.Text = "......";
+			this.button3.UseVisualStyleBackColor = true;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(669, 337);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(65, 12);
+			this.label11.TabIndex = 7;
+			this.label11.Text = "升级耗时：";
+			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(66, 52);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(763, 21);
+			this.textBox3.TabIndex = 8;
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(880, 52);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(51, 23);
+			this.button4.TabIndex = 9;
+			this.button4.Text = "......";
+			this.button4.UseVisualStyleBackColor = true;
+			// 
+			// 选择flash驱动
+			// 
+			this.选择flash驱动.Location = new System.Drawing.Point(46, 33);
+			this.选择flash驱动.Name = "选择flash驱动";
+			this.选择flash驱动.Size = new System.Drawing.Size(897, 55);
+			this.选择flash驱动.TabIndex = 10;
+			this.选择flash驱动.TabStop = false;
+			this.选择flash驱动.Text = "选择Flash驱动文件";
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Location = new System.Drawing.Point(46, 94);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(897, 55);
+			this.groupBox5.TabIndex = 11;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "选择MCU升级文件";
+			// 
+			// groupBox6
+			// 
+			this.groupBox6.Location = new System.Drawing.Point(652, 267);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(291, 95);
+			this.groupBox6.TabIndex = 11;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "附加功能";
 			// 
 			// Form1
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-			this.ClientSize = new System.Drawing.Size(985, 514);
-			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.GroupBox1);
-			this.Controls.Add(this.GroupBox4);
-			this.Controls.Add(this.GroupBox2);
+			this.ClientSize = new System.Drawing.Size(1028, 558);
+			this.Controls.Add(this.连接发送);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
@@ -995,6 +1190,10 @@ namespace neoCSNet2003
 			this.TabPage4.ResumeLayout(false);
 			this.TabPage4.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
+			this.连接发送.ResumeLayout(false);
+			this.tabPage6.ResumeLayout(false);
+			this.tabPage6.PerformLayout();
+			this.tabPage8.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1043,7 +1242,16 @@ namespace neoCSNet2003
 			NeoDevice ndNeoToOpen = new NeoDevice();    //该结构体中保存检测到的硬件信息
 			byte[] bNetwork =  new byte[64];    //列出硬件ID
 			int iNumberOfDevices;   //要查找的硬件设备数
-			int iCount;		 //counter
+			int iCount;      //counter
+
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.Multiselect = true;//该值确定是否可以选择多个文件
+			dialog.Title = "请选择文件夹";
+			dialog.Filter = "所有文件(*.*)|*.*";
+			if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+			{
+				string file = dialog.FileName;
+			}
 
 			//check if the port is already open
 			//检查当前的端口是否已经被打开
@@ -1379,7 +1587,7 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 			if (lResult== 1)
 			{
 				// clear the previous list of messages
-				lstMessage.Items.Clear();
+				接收报文显示.Items.Clear();
 				lblReadCount.Text = "Number Read : " + Convert.ToString(lNumberOfMessages);
 				lblReadErrors.Text = "Number Errors : " + Convert.ToString(lNumberOfErrors);
 				// for each message we read
@@ -1439,7 +1647,7 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 					}
 
 					//Add the message to the list
-					lstMessage.Items.Add(sListString);
+					接收报文显示.Items.Add(sListString);
 	
 				}
 			}
@@ -1480,7 +1688,7 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 					{
 						//Get Text Description of the Error
 						iResult = icsNeoDll.icsneoGetErrorInfo(iErrors[iCount], sErrorShort, sErrorLong ,ref  iMaxLengthShort , ref iMaxLengthLong, ref iSeverity,ref lRestart);
-						lstErrorHolder.Items.Add (sErrorShort + " - Description " + sErrorLong + " - Errornum: " + iErrors[iCount]);
+						错误显示.Items.Add (sErrorShort + " - Description " + sErrorLong + " - Errornum: " + iErrors[iCount]);
 					}
 				}
 			}
@@ -1827,6 +2035,51 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 		}
 
 		private void txtCNF1_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Label15_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+		{
+
+		}
+
+		private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+		{
+
+		}
+
+		private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+		{
+
+		}
+
+		private void openFileDialog2_FileOk(object sender, CancelEventArgs e)
+		{
+
+		}
+
+		private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label12_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
 		{
 
 		}
