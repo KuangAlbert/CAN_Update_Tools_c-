@@ -1047,7 +1047,7 @@ namespace neoCSNet2003
 			this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage6.Size = new System.Drawing.Size(1008, 521);
 			this.tabPage6.TabIndex = 1;
-			this.tabPage6.Text = "CANÉý¼¶£º";
+			this.tabPage6.Text = "CANÉý¼¶";
 			this.tabPage6.UseVisualStyleBackColor = true;
 			// 
 			// tabPage8
