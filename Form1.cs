@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Text;
 using System.IO;
+using System.Threading;
 
 
 //命名空间的设计目的是提供一种让一组名称与其他名称分隔开的方式。在一个命名空间中声明的类的名称与另一个命名空间中声明的相同的类的名称不冲突。
@@ -1236,11 +1237,22 @@ namespace neoCSNet2003
 		[STAThread]
 		static void Main() 
 		{
-			Application.Run(new Form1());
-		}
+ 
+           
+            ThreadStart threadStart = new ThreadStart(Calculate);　　
+            Thread thread = new Thread(threadStart);
+            thread.Start();//启动新线程
 
-		//将数字字符串转化为数字
-		private int ConvertFromHex(string num) 
+            Application.Run(new Form1());
+        }
+
+        private static void Calculate()
+        {
+            MessageBox.Show("执行成功");
+        }
+
+        //将数字字符串转化为数字
+        private int ConvertFromHex(string num) 
 		{
 			//To hold our converted unsigned integer32 value
 			uint uiHex = 0;
