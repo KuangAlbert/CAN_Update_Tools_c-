@@ -1219,9 +1219,21 @@ namespace neoCSNet2003
 
         string FlashDriverPath;//保存Flash驱动文件的路径
         string UpdateFilePath;//保存升级文件的路径
+
         char[] FBLLoadDataAscii = new char[0xFFFFFF];//升级数据Ascii码
 
-        [STAThread]
+		byte[] FlashDrvLoadData = new byte[0xFFFFFF];//驱动文件数据数据
+		byte[] FBLMcuLoadData = new byte[0xFFFFFF];//升级文件数据
+
+		uint[] FlashDrvStartAdrr = new uint[1];//驱动文件起始地址
+		uint[] FBLMcuStartAdrr = new uint[1];//升级文件起始地址
+
+		uint[] FlashDrvTransmitDataLen = new uint[1];//驱动文件总数据长度
+		uint[] FBLMcuTransmitDataLen = new uint[1];//升级文件总数据长度
+		
+		int Packlen = 0x200;
+
+		[STAThread]
 		static void Main() 
 		{
 			Application.Run(new Form1());
@@ -2090,7 +2102,7 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;//该值确定是否可以选择多个文件
             dialog.Title = "请选择文件";//对话框的标题
-            dialog.Filter = "升级文件(*.s19)|*.s19|升级文件(*.bin)|*.bin|文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
+            dialog.Filter = "升级文件(*.bin)|*.bin|升级文件(*.s19)|*.s19|文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
  
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -2119,10 +2131,416 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 
         }
 
-        // 开始升级按钮
-        private void button1_Click(object sender, EventArgs e)
+		private byte Ascii2Hex(char cha)
+		{
+			byte temp;
+			if (cha >= 0x30 && cha <= 0x39)
+			{
+				temp = Convert.ToByte(cha - 0x30);
+			}
+			else if (cha >= 'A' && cha <= 'F')
+			{
+				temp = Convert.ToByte(cha - 'A' + 10);
+			}
+			else if (cha >= 'a' && cha <= 'f')
+			{
+				temp = Convert.ToByte(cha - 'a' + 10);
+			}
+			else
+			{
+				temp = 255;
+			}
+			return temp;
+		}
+
+		private int DataTransfer(char[] InputData, uint InputNum, ref byte[] OutputData, uint OutputNum, ref uint[] StartAdrr, ref uint[] TransferDataLen)
+		{
+			uint i = 0;
+			int flow = 0;
+			int j;
+			uint InternalAddrr;
+			byte InternalLen;
+			byte InternalCheckSum;
+
+			for (i = 0; i < OutputNum; i++)
+			{
+				OutputData[i] = Convert.ToByte(0x00);
+			}
+
+			for (i = 0; i < InputNum; i++)
+			{
+				if (i == InputNum - 1)
+				{
+					return -1;
+				}
+
+				if ((InputData[i] == 'S') && (InputData[i + 1] == '0'))/*Data Start!*/
+				{
+					flow = 1;
+					i = InputNum - 1;
+				}
+			}
+
+			if (flow == 1)
+			{
+				for (i = 0; i < InputNum; i++)
+				{
+					if ((InputData[i] == 'S') && (InputData[i + 1] == '2'))/*Adrress Start!*/
+					{
+						flow = 0;
+						for (j = 0; j < 6; j++)
+						{
+							StartAdrr[0] = StartAdrr[0] << 4;
+							StartAdrr[0] |= Ascii2Hex(InputData[i + 4 + j]);
+						}
+						i = InputNum - 1;
+					}
+				}
+
+				for (i = 0; i < InputNum; i++)
+				{
+					if ((InputData[i] == 'S') && (InputData[i + 1] == '3'))/*Adrress Start!*/
+					{
+						flow = 0;
+						for (j = 0; j < 8; j++)
+						{
+							StartAdrr[0] = StartAdrr[0] << 4;
+							StartAdrr[0] |= Ascii2Hex(InputData[i + 4 + j]);
+						}
+						i = InputNum - 1;
+					}
+				}
+			}
+
+			for (i = 0; i < InputNum; i++)
+			{
+				InternalLen = 0;
+				InternalAddrr = 0;
+				InternalCheckSum = 0;
+				if ((InputData[i] == 0x0A) && (InputData[i + 1] == 'S') && (InputData[i + 2] == '2'))
+				{
+
+					for (j = 0; j < 2; j++)
+					{
+						InternalLen =  Convert.ToByte(InternalLen << 4);
+						InternalLen |= Ascii2Hex(InputData[i + 3 + j]);
+					}
+					for (j = 0; j < 6; j++)
+					{
+						InternalAddrr = InternalAddrr << 4;
+						InternalAddrr |= Ascii2Hex(InputData[i + 5 + j]);
+					}
+					for (j = 0; j < 2; j++)
+					{
+						InternalCheckSum = (byte)(InternalCheckSum << 4);
+						InternalCheckSum |= Ascii2Hex(InputData[i + 2 * InternalLen + 3 + j]);
+					}
+
+					for (j = 0; j < (InternalLen - 4) * 2; j++)
+					{
+						OutputData[InternalAddrr - StartAdrr[0] + j / 2] = Convert.ToByte(OutputData[InternalAddrr - StartAdrr[0] + j / 2] << 4);
+						OutputData[InternalAddrr - StartAdrr[0] + j / 2] |= Ascii2Hex(InputData[i + 11 + j]);
+						TransferDataLen[0] = Convert.ToUInt32(InternalAddrr - StartAdrr[0] + j / 2);
+					}
+				}
+				if ((InputData[i] == '\n') && (InputData[i + 1] == 'S') && (InputData[i + 2] == '3'))
+				{
+					for (j = 0; j < 2; j++)
+					{
+						InternalLen = Convert.ToByte(InternalLen << 4);
+						InternalLen |= Ascii2Hex(InputData[i + 3 + j]);
+					}
+
+					for (j = 0; j < 8; j++)
+					{
+						InternalAddrr = InternalAddrr << 4;
+						InternalAddrr |= Ascii2Hex(InputData[i + 5 + j]);
+					}
+
+					for (j = 0; j < 2; j++)
+					{
+						InternalCheckSum = Convert.ToByte(InternalCheckSum << 4);
+						InternalCheckSum |= Ascii2Hex(InputData[i + 2 * InternalLen + 3 + j]);
+					}
+
+					for (j = 0; j < (InternalLen - 5) * 2; j++)
+					{
+						OutputData[InternalAddrr - StartAdrr[0] + j / 2] = Convert.ToByte(OutputData[InternalAddrr - StartAdrr[0] + j / 2] << 4);
+						OutputData[InternalAddrr - StartAdrr[0] + j / 2] |= Ascii2Hex(InputData[i + 13 + j]);
+						TransferDataLen[0] = Convert.ToUInt32(InternalAddrr - StartAdrr[0] + j / 2);
+					}
+				}
+				if ((InputData[i] == 0x0A) && (InputData[i + 1] == 'S') && (InputData[i + 2] == '8'))
+				{
+					i = InputNum - 1;
+				}
+				if ((InputData[i] == 0x0A) && (InputData[i + 1] == 'S') && (InputData[i + 2] == '7'))
+				{
+					i = InputNum - 1;
+				}
+			}
+
+			if ((TransferDataLen[0] % Packlen) != 0)
+			{
+				uint DataLenSave;
+				DataLenSave = TransferDataLen[0];
+
+				TransferDataLen[0] += Convert.ToUInt32(Packlen - (TransferDataLen[0] % Packlen));
+
+
+				for (i = DataLenSave + 1; i < TransferDataLen[0]; i++)
+				{
+					OutputData[i] = 0xFF;
+				}
+			}
+
+			return 0;
+		}
+
+		//n字节发送函数
+		private void SendDataAtFunctionalConnector(byte[] sendData, ushort sendsize)
+		{
+			ushort restSendSize;
+			ushort currentSendSize;
+			ushort loopCount;
+			byte CFnumber = 0;
+			byte CFsize = 0;
+			int i = 0;
+
+			long lResult;
+			icsSpyMessage stMessagesTx = new icsSpyMessage();
+			long lNetworkID;
+			long lNumberBytes;
+			Int32 CAN_TX_ID = 0x782;
+
+			//读取当期网络类型
+			lNetworkID = lstNetwork.SelectedIndex;
+
+			stMessagesTx.NetworkID = Convert.ToByte(lNetworkID);
+			stMessagesTx.StatusBitField = 0;//不使用扩展ID
+			stMessagesTx.ArbIDOrHeader = CAN_TX_ID;
+			stMessagesTx.NumberBytesData = 8;
+
+			if (sendsize < 8)
+			{
+				stMessagesTx.Data1 = Convert.ToByte(sendsize);
+
+				switch (sendsize)
+				{
+					case 7:
+						stMessagesTx.Data8 = sendData[6];
+						stMessagesTx.Data7 = sendData[5];
+						stMessagesTx.Data6 = sendData[4];
+						stMessagesTx.Data5 = sendData[3];
+						stMessagesTx.Data4 = sendData[2];
+						stMessagesTx.Data3 = sendData[1];
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					case 6:
+						stMessagesTx.Data8 = 0;
+						stMessagesTx.Data7 = sendData[5];
+						stMessagesTx.Data6 = sendData[4];
+						stMessagesTx.Data5 = sendData[3];
+						stMessagesTx.Data4 = sendData[2];
+						stMessagesTx.Data3 = sendData[1];
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					case 5:
+						stMessagesTx.Data8 = 0;
+						stMessagesTx.Data7 = 0;
+						stMessagesTx.Data6 = sendData[4];
+						stMessagesTx.Data5 = sendData[3];
+						stMessagesTx.Data4 = sendData[2];
+						stMessagesTx.Data3 = sendData[1];
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					case 4:
+						stMessagesTx.Data8 = 0;
+						stMessagesTx.Data7 = 0;
+						stMessagesTx.Data6 = 0;
+						stMessagesTx.Data5 = sendData[3];
+						stMessagesTx.Data4 = sendData[2];
+						stMessagesTx.Data3 = sendData[1];
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					case 3:
+						stMessagesTx.Data8 = 0;
+						stMessagesTx.Data7 = 0;
+						stMessagesTx.Data6 = 0;
+						stMessagesTx.Data5 = 0;
+						stMessagesTx.Data4 = sendData[2];
+						stMessagesTx.Data3 = sendData[1];
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					case 2:
+						stMessagesTx.Data8 = 0;
+						stMessagesTx.Data7 = 0;
+						stMessagesTx.Data6 = 0;
+						stMessagesTx.Data5 = 0;
+						stMessagesTx.Data4 = 0;
+						stMessagesTx.Data3 = sendData[1];
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					case 1:
+						stMessagesTx.Data8 = 0;
+						stMessagesTx.Data7 = 0;
+						stMessagesTx.Data6 = 0;
+						stMessagesTx.Data5 = 0;
+						stMessagesTx.Data4 = 0;
+						stMessagesTx.Data3 = 0;
+						stMessagesTx.Data2 = sendData[0];
+						break;
+					default:
+						break;
+				}
+
+				lResult = icsNeoDll.icsneoTxMessages(m_hObject, ref stMessagesTx, Convert.ToInt32(lNetworkID), 1);
+
+				// 检查发送的结果
+				if (lResult != 1)
+				{
+					MessageBox.Show("发送消息失败");
+				}
+
+			}
+			else
+			{
+				stMessagesTx.Data1 = 0x10;
+				stMessagesTx.Data2 = Convert.ToByte(sendsize);
+				stMessagesTx.Data3 = sendData[0];
+				stMessagesTx.Data4 = sendData[1];
+				stMessagesTx.Data5 = sendData[2];
+				stMessagesTx.Data6 = sendData[3];
+				stMessagesTx.Data7 = sendData[4];
+				stMessagesTx.Data8 = sendData[5];
+
+				lResult = icsNeoDll.icsneoTxMessages(m_hObject, ref stMessagesTx, Convert.ToInt32(lNetworkID), 1);
+
+				// 检查发送的结果
+				if (lResult != 1)
+				{
+					MessageBox.Show("发送消息失败");
+				}
+
+				//Sleep(cyclictimer);
+
+				restSendSize = Convert.ToUInt16(sendsize - 6);
+				currentSendSize = 6;
+
+				loopCount = Convert.ToUInt16 ((restSendSize / 7) + 1);
+				CFnumber = 1;
+
+				for (i = 0; i <= loopCount + 1; i++)
+				{
+
+					if ((restSendSize / 7) > 0)
+					{
+						CFsize = 7;
+					}
+					else
+					{
+						CFsize = Convert.ToByte(restSendSize % 7);
+					}
+
+					stMessagesTx.Data1 = Convert.ToByte(0x20 + CFnumber);
+
+					switch (CFsize)
+					{
+						case 7:
+							stMessagesTx.Data8 = sendData[currentSendSize + 6];
+							stMessagesTx.Data7 = sendData[currentSendSize + 5];
+							stMessagesTx.Data6 = sendData[currentSendSize + 4];
+							stMessagesTx.Data5 = sendData[currentSendSize + 3];
+							stMessagesTx.Data4 = sendData[currentSendSize + 2];
+							stMessagesTx.Data3 = sendData[currentSendSize + 1];
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+						case 6:
+							stMessagesTx.Data8 = 0;
+							stMessagesTx.Data7 = sendData[currentSendSize + 5];
+							stMessagesTx.Data6 = sendData[currentSendSize + 4];
+							stMessagesTx.Data5 = sendData[currentSendSize + 3];
+							stMessagesTx.Data4 = sendData[currentSendSize + 2];
+							stMessagesTx.Data3 = sendData[currentSendSize + 1];
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+						case 5:
+							stMessagesTx.Data8 = 0;
+							stMessagesTx.Data7 = 0;
+							stMessagesTx.Data6 = sendData[currentSendSize + 4];
+							stMessagesTx.Data5 = sendData[currentSendSize + 3];
+							stMessagesTx.Data4 = sendData[currentSendSize + 2];
+							stMessagesTx.Data3 = sendData[currentSendSize + 1];
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+						case 4:
+							stMessagesTx.Data8 = 0;
+							stMessagesTx.Data7 = 0;
+							stMessagesTx.Data6 = 0;
+							stMessagesTx.Data5 = sendData[currentSendSize + 3];
+							stMessagesTx.Data4 = sendData[currentSendSize + 2];
+							stMessagesTx.Data3 = sendData[currentSendSize + 1];
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+						case 3:
+							stMessagesTx.Data8 = 0;
+							stMessagesTx.Data7 = 0;
+							stMessagesTx.Data6 = 0;
+							stMessagesTx.Data5 = 0;
+							stMessagesTx.Data4 = sendData[currentSendSize + 2];
+							stMessagesTx.Data3 = sendData[currentSendSize + 1];
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+						case 2:
+							stMessagesTx.Data8 = 0;
+							stMessagesTx.Data7 = 0;
+							stMessagesTx.Data6 = 0;
+							stMessagesTx.Data5 = 0;
+							stMessagesTx.Data4 = 0;
+							stMessagesTx.Data3 = sendData[currentSendSize + 1];
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+						case 1:
+							stMessagesTx.Data8 = 0;
+							stMessagesTx.Data7 = 0;
+							stMessagesTx.Data6 = 0;
+							stMessagesTx.Data5 = 0;
+							stMessagesTx.Data4 = 0;
+							stMessagesTx.Data3 = 0;
+							stMessagesTx.Data2 = sendData[currentSendSize + 0];
+							break;
+
+						default:
+							break;
+					}
+
+					lResult = icsNeoDll.icsneoTxMessages(m_hObject, ref stMessagesTx, Convert.ToInt32(lNetworkID), 1);
+
+					// 检查发送的结果
+					if (lResult != 1)
+					{
+						MessageBox.Show("发送消息失败");
+					}
+
+					//Sleep(cyclictimer);
+
+					restSendSize = Convert.ToUInt16(restSendSize - 7);
+					currentSendSize = Convert.ToUInt16(currentSendSize + 7);//currentSendSize is debug temp variable,could be ignore
+
+					CFnumber++;
+
+					if (CFnumber > 0xF)//max is 2F
+					{
+						CFnumber = 0;
+					}
+				}
+			}
+		}
+
+		// 开始升级按钮
+		private void button1_Click(object sender, EventArgs e)
         {
-            // 读取Flash驱动文件
+            // ******************************************** 读取Flash驱动文件 **********************************/
             if(FlashDriverPath == null || FlashDriverPath.Length == 0)
             {
                 MessageBox.Show("请选择Flash驱动文件路径");
@@ -2142,16 +2560,48 @@ private void cmdCloseDevice_Click(object sender, System.EventArgs e)
 
                     Array.Clear(FBLLoadDataAscii, 0, FBLLoadDataAscii.Length);// 清空数组
                     FBLLoadDataAscii = Bin.ToCharArray();
-                    //Console.WriteLine(FBLLoadDataAscii[0]);
+					DataTransfer(FBLLoadDataAscii, Convert.ToUInt32(FBLLoadDataAscii.Length), ref FlashDrvLoadData, 0xFFFFFF, ref FlashDrvStartAdrr, ref FlashDrvTransmitDataLen);
 
-                }
+				}
             }
             catch (Exception b)
             {
                 // 向用户显示出错消息
-                MessageBox.Show("这个文件不能被读取");
+                MessageBox.Show("读取升级文件异常");
                 Console.WriteLine(b.Message);
             }
-        }
+
+
+			// ******************************************** 读取升级文件 **********************************/
+			if (UpdateFilePath == null || UpdateFilePath.Length == 0)
+			{
+				MessageBox.Show("请选择升级文件文件路径");
+				return;
+			}
+
+			try
+			{
+				// 创建一个 StreamReader 的实例来读取文件 
+				// using 语句也能关闭 StreamReader
+				using (StreamReader sr = new StreamReader(FlashDriverPath))
+				{
+					string Bin;
+
+					// 从文件读取并显示行，直到文件的末尾
+					Bin = sr.ReadToEnd();
+
+					Array.Clear(FBLLoadDataAscii, 0, FBLLoadDataAscii.Length);// 清空数组
+					FBLLoadDataAscii = Bin.ToCharArray();
+					DataTransfer(FBLLoadDataAscii, Convert.ToUInt32(FBLLoadDataAscii.Length), ref FBLMcuLoadData, 0xFFFFFF, ref FBLMcuStartAdrr, ref FBLMcuTransmitDataLen);
+
+				}
+			}
+			catch (Exception b)
+			{
+				// 向用户显示出错消息
+				MessageBox.Show("读取升级文件异常");
+				Console.WriteLine(b.Message);
+			}
+		}
     }
 }
